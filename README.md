@@ -1,2 +1,0 @@
-# Codyssey
-Github X Codyssey
