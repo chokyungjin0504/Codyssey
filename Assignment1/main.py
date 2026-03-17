@@ -1,9 +1,21 @@
+# Hello Mars.py
+print('Hello, Mars!')
+print('=' * 50)
+
 # main.py
 def read_log_file(filename):
     try:
         with open(filename, 'r', encoding='utf-8') as file:
-            content = file.read()
-            print(content)
+            lines = file.readlines()
+            # 기본 출력
+            for line in lines:
+                print(line, end='')
+            # 구분선
+            print('=' * 50)
+            # 역순 출력
+            lines.reverse()
+            for line in lines:
+                print(line, end='')
     except FileNotFoundError:
         print(f'Error: {filename} 파일을 찾을 수 없습니다.')
     except PermissionError:
