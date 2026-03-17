@@ -1,21 +1,24 @@
 # Hello Mars.py
+print('--- HelloMars 테스트 ---')
 print('Hello, Mars!')
-print('=' * 50)
 
 # main.py
 def read_log_file(filename):
     try:
+
         with open(filename, 'r', encoding='utf-8') as file:
+            print(f'\n--- {filename} 내용 출력 ---')
             lines = file.readlines()
             # 기본 출력
             for line in lines:
                 print(line, end='')
             # 구분선
-            print('=' * 50)
+            print(f'\n--- {filename} 내용 역순 출력 ---')
             # 역순 출력
             lines.reverse()
             for line in lines:
                 print(line, end='')
+
     except FileNotFoundError:
         print(f'Error: {filename} 파일을 찾을 수 없습니다.')
     except PermissionError:
@@ -24,4 +27,4 @@ def read_log_file(filename):
         print(f'예상치 못한 오류 발생: {e}')
 
 if __name__ == '__main__':
-    read_log_file('./mission_computer_main.log')
+    read_log_file('mission_computer_main.log')
