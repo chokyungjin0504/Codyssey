@@ -26,5 +26,7 @@ def read_log_file(filename):
     except Exception as e:
         print(f'예상치 못한 오류 발생: {e}')
 
+
+# 이 파일만 테스트해보고싶을 때
 if __name__ == '__main__':
     read_log_file('mission_computer_main.log')
