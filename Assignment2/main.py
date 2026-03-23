@@ -49,6 +49,7 @@ try:
     for row in loaded_data:
         print(row)
 
+    # 8. 예외 처리
 except FileNotFoundError:
     print('CSV 파일을 찾을 수 없습니다. 파일 이름과 경로를 확인하세요.')
 except Exception as e:
