@@ -20,13 +20,13 @@ try:
         print(row)
 
     # 4. 인화성 지수 0.7 이상 필터링
-    dangerous_items = [row for row in sorted_data if float(row['Flammability']) >= 0.7]
+    dangerous_items = [row for row in sorted_data if float(row['Flammability']) >= 0.7] 
 
     print('\n인화성 지수 0.7 이상:')
     for row in dangerous_items:
         print(row)
 
-    # 5. 새로운 CSV 저장
+     # 5. 새로운 CSV 저장
     with open('Mars_Base_Inventory_danger.csv', 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=reader.fieldnames)  # 딕셔너리 형태의 데이터를 CSV로 저장
         writer.writeheader() # 헤더 작성
