@@ -4,15 +4,15 @@ import pickle   # 이진 파일 저장/읽기를 위해 사용
 try:
     # 1. CSV 읽기
     with open('Mars_Base_Inventory_List.csv', 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        data = list(reader)
+        reader = csv.DictReader(f) # CSV 파일을 딕셔너리 형태로 읽어오기 (헤더를 키로 사용)
+        data = list(reader) # CSV 데이터를 리스트로 변환 (각 행이 딕셔너리 형태로 저장됨)
 
     # 2. 출력
     print('전체 데이터:')
     for row in data:
-        print(row)
+        print(row) # key-value 형태로 출력
 
-    # 3. 인화성 기준 정렬 (내림차순)
+    # 3. Flammability 기준 정렬 (내림차순)
     sorted_data = sorted(data, key=lambda x: float(x['Flammability']), reverse=True)
 
     print('\n인화성 높은 순 정렬:')
@@ -28,9 +28,9 @@ try:
 
     # 5. 새로운 CSV 저장
     with open('Mars_Base_Inventory_danger.csv', 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=reader.fieldnames)
-        writer.writeheader()
-        writer.writerows(dangerous_items)
+        writer = csv.DictWriter(f, fieldnames=reader.fieldnames)  # 딕셔너리 형태의 데이터를 CSV로 저장
+        writer.writeheader() # 헤더 작성
+        writer.writerows(dangerous_items) # 필터링된 데이터를 CSV로 저장
 
     print('\nMars_Base_Inventory_danger.csv 파일 저장 완료!')
 
