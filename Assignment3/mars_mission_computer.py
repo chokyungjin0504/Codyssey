@@ -9,7 +9,7 @@ class DummySensor:
         DummySensor 클래스 초기화 메소드.
         - env_values: 센서 값들을 저장하는 딕셔너리
         - log_file: 로그 파일 이름
-        - _init_log_file(): 로그 파일에 헤더를 최초 한 번만 기록
+        - _init_log_file(): 로그 파일이 없으면 만들고 헤더를 기록 / 헤더는 한 번만 기록하여 중복 방지
         """
         self.env_values = {
             'mars_base_internal_temperature': None,   # 화성 기지 내부 온도
@@ -59,10 +59,13 @@ class DummySensor:
         - 현재 날짜와 시간을 포함하여 로그에 저장
         - 로그는 CSV 형태로 기록되어 분석 및 유지보수에 용이
         """
+
+        # strftime을 사용하여 날짜와 시간을 'YYYY-MM-DD HH:MM:SS' 형식으로 포맷팅
         now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        
         log_line = (
             f'{now}, '
-            f'{self.env_values["mars_base_internal_temperature"]:.2f}, '
+            f'{self.env_values["mars_base_internal_temperature"]:.2f}, ' # 소숫점 2자리로 포맷팅
             f'{self.env_values["mars_base_external_temperature"]:.2f}, '
             f'{self.env_values["mars_base_internal_humidity"]:.2f}, '
             f'{self.env_values["mars_base_external_illuminance"]:.2f}, '
