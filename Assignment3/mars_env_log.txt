@@ -1,0 +1,2 @@
+DateTime, Internal Temp (°C), External Temp (°C), Internal Humidity (%), External Illuminance (W/m2), Internal CO2 (%), Internal Oxygen (%)
+2026-03-28 21:10:48, 23.47, 13.21, 53.82, 535.79, 0.0747, 6.10
