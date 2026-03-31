@@ -41,17 +41,22 @@ class DummySensor:
                 )
                 log_file.write(header + '\n')
 
+    def _unique_random(self, key, low, high, precision=2):
+        """중복되지 않는 난수를 생성하는 헬퍼 메소드"""
+        existing_values = set(v for k, v in self.env_values.items() if v is not None)
+        while True:
+            value = round(random.uniform(low, high), precision)
+            if value not in existing_values:
+                self.env_values[key] = value
+                break
+
     def set_env(self):
-        """
-        환경 데이터를 랜덤 값으로 설정하는 메소드.
-        각 항목은 지정된 범위 내에서 난수(random.uniform)를 사용해 생성.
-        """
-        self.env_values['mars_base_internal_temperature'] = random.uniform(18, 30)
-        self.env_values['mars_base_external_temperature'] = random.uniform(0, 21)
-        self.env_values['mars_base_internal_humidity'] = random.uniform(50, 60)
-        self.env_values['mars_base_external_illuminance'] = random.uniform(500, 715)
-        self.env_values['mars_base_internal_co2'] = random.uniform(0.02, 0.1)
-        self.env_values['mars_base_internal_oxygen'] = random.uniform(4, 7)
+        self._unique_random('mars_base_internal_temperature', 18, 30)
+        self._unique_random('mars_base_external_temperature', 0, 21)
+        self._unique_random('mars_base_internal_humidity', 50, 60)
+        self._unique_random('mars_base_external_illuminance', 500, 715)
+        self._unique_random('mars_base_internal_co2', 0.02, 0.1, precision=4)
+        self._unique_random('mars_base_internal_oxygen', 4, 7)
 
     def get_env(self):
         """
