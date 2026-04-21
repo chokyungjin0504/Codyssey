@@ -308,11 +308,11 @@ class Calculator(QWidget):
         # 숫자가 길어질수록 글자를 작게 만들어 디스플레이를 벗어나지 않게 함
         length = len(display_text)
         if length <= 6:
-            font_size = 40   # 짧으면 크게
+            font_size = 52   # 짧으면 크게
         elif length <= 9:
-            font_size = 30   # 중간이면 중간
+            font_size = 38   # 중간이면 중간
         else:
-            font_size = 20   # 길면 작게
+            font_size = 28   # 길면 작게
 
         # 폰트 크기 적용
         self.display.setFont(QFont("Arial", font_size, QFont.Light))
